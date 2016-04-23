@@ -12,6 +12,8 @@ if (window.location.hash.startsWith("#room:")) {
 
 }
 
+var isCoordinator = false;
+
 /// SERVER SPECIFIC ///
 
 var connectedPeers = [];
@@ -19,6 +21,8 @@ var connectedPeers = [];
 // Start a new server/host
 var startCoordinator = function () {
 
+    isCoordinator = true;
+    
     peer.on('connection', function (conn) {
         
         conn.on('data', function (data) {

@@ -5,25 +5,43 @@
 <head>
 
     <title>BeChill</title>
-    
-    <script src="http://cdn.peerjs.com/0.3/peer.js"></script>
-    
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <!--    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">-->
 
+    <script src="http://cdn.peerjs.com/0.3/peer.js"></script>
 </head>
 
 <body>
 
-    <div class="btn-group">
-
-        <button type="button" id="play-pause" class="btn btn-default" data-bind="value: isPlaying"><span class="glyphicon glyphicon-play"></span></button>
-
+    <div class="container">
+        <h1>BeChill</h1>
+        <hr>
+        <dl class="dl-horizontal">
+            <dt>Current Song</dt>
+            <dd>
+                <span data-bind="text: currentSongName"></span>
+            </dd>
+        </dl>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-backward"></span></button>
+            <button type="button" class="btn btn-default" data-bind="click: togglePlayPause">
+                <div data-bind="if: isPlaying">
+                    <span class="glyphicon glyphicon-play"></span>
+                </div>
+                <div data-bind="ifnot: isPlaying">
+                    <span class="glyphicon glyphicon-pause"></span>
+                </div>
+            </button>
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-forward"></span></button>
+        </div>
+        <hr>
     </div>
 
 </body>
 
+
 <script type="text/javascript" src="knockout-3.4.0.js"></script>
-<script type="text/javascript" src="ui.js"></script>
 <script type="text/javascript" src="bechill.js"></script>
+<script type="text/javascript" src="ui.js"></script>
 
 </html>

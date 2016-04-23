@@ -1,7 +1,9 @@
 var ViewModel = function () {
     var self = this;
 
-    self.isPlaying = ko.observable(currentStatus.playing);
+    self.status = ko.observable(currentStatus)
+    
+    self.isPlaying = ko.observable();
     self.currentSong = ko.computed(function () {
         return playlist[currentStatus.song].title;
     }, this);
@@ -11,15 +13,16 @@ var ViewModel = function () {
 
     self.playButton = function () {
         self.isPlaying(!self.isPlaying());
-
+        
+        if(isCoordinator){
+            currentStatus.playing = self.isPlaying();
+            return 0;
+        }
+        
         var copy = copyObject(currentStatus);
         copy.playing = self.isPlaying();
         
         sendUpdatedMediaStatus(copy);
-    };
-
-    self.startCoordinator = function () {
-        startCoordinator();
     };
 };
 

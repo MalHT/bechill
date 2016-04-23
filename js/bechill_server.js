@@ -1,5 +1,9 @@
 var apikey = "pcylravfak1kbj4i";
 
+var copyObject = function (thing) {
+    return JSON.parse(JSON.stringify(thing));
+};
+
 var peer = new Peer({
     key: apikey
 });

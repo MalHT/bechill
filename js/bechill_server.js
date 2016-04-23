@@ -26,6 +26,8 @@ var connectedPeers = [];
 // Start a new server/host
 var startCoordinator = function () {
 
+    console.log("Starting coordinator...");
+    
     isCoordinator = true;
     
     peer.on('connection', function (conn) {

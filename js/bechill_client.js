@@ -3,6 +3,8 @@ var coordinator;
 // Connect to a server/host by its id
 var connectCoordinator = function (serverid) {
 
+    console.log("Connecting to coordinator...");
+    
     isConnectedAsClient = true;
     
     coordinator = peer.connect(serverid);

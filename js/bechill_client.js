@@ -29,7 +29,7 @@ var connectCoordinator = function (serverid) {
                 
                 delete data.msg;
                 
-                playlist = playlist;
+                playlist = updatedPlaylist;
                 
             }
             

@@ -32,6 +32,26 @@ var startCoordinator = function () {
                 
             }
             
+            if (data.msg === "updatemediastatus") {
+
+                var updatedStatus = JSON.parse(JSON.stringify(data));
+                
+                delete updatedStatus.msg;
+                
+                currentStatus = updatedStatus;
+                
+            }
+            
+            if (data.msg === "updateplaylist") {
+                
+                var updatedPlaylist = JSON.parse(JSON.stringify(data));
+                
+                delete data.msg;
+                
+                playlist = updatedPlaylist;
+                
+            }
+            
             console.log(data);
             
         });

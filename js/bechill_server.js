@@ -13,6 +13,7 @@ if (window.location.hash.startsWith("#room:")) {
 }
 
 var isCoordinator = false;
+var isConnectedAsClient = false;
 
 /// SERVER SPECIFIC ///
 

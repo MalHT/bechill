@@ -7,9 +7,8 @@ var ViewModel = function () {
     self.currentSong = ko.computed(function () {
         return playlist[currentStatus.song].title;
     }, this);
-    self.displayStartHostButton = ko.computed(function () {
-        return !isCoordinator && !isConnectedAsClient;
-    }, this);
+    self.displayStartHostButton = ko.observable(true);
+    self.peerId = ko.observable("");
 
     self.playButton = function () {
         self.isPlaying(!self.isPlaying());
@@ -23,6 +22,12 @@ var ViewModel = function () {
         copy.playing = self.isPlaying();
         
         sendUpdatedMediaStatus(copy);
+    };
+    
+    self.startHostingButton = function () {
+        startCoordinator();  
+        self.displayStartHostButton(false);
+        self.peerId(peer.id);
     };
 };
 

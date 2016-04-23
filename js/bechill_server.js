@@ -28,6 +28,8 @@ var startCoordinator = function () {
 
     console.log("Starting coordinator...");
     
+    prompt("Your Peer ID:", peer.id);
+    
     isCoordinator = true;
     
     peer.on('connection', function (conn) {

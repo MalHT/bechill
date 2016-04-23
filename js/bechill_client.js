@@ -41,7 +41,7 @@ var connectCoordinator = function (serverid) {
 
 };
 
-var sendUpdatedPlaylist = function () {
+var sendUpdatedMediaStatus = function () {
     
     var message = currentStatus;
     
@@ -51,7 +51,7 @@ var sendUpdatedPlaylist = function () {
     
 };
 
-var sendUpdatedMediaStatus = function () {
+var sendUpdatedPlaylist = function () {
     
     var message = playlist;
     

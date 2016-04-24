@@ -2,14 +2,16 @@ var ViewModel = function () {
     var self = this;
 
     self.status = ko.observable(currentStatus)
-
+    self.showMainPage = ko.observable(true);
     self.isPlaying = ko.observable(false);
     self.currentSong = ko.computed(function () {
         return playlist[currentStatus.song].title;
     }, this);
 
     self.displayStartHostButton = ko.observable(true);
-    self.peerId = ko.observable("");
+    self.displayJoinRoomButton = ko.observable(true);
+    
+    self.peerId = ko.observable('');
 
     self.playButton = function () {
         self.isPlaying(!self.isPlaying());
@@ -27,9 +29,22 @@ var ViewModel = function () {
 
     self.startHostButton = function () {
         startCoordinator();
-        self.displayStartHostButton(false);
+        self.showButtons(false);
         self.peerId(peer.id);
     };
+    
+    self.joinRoomButton = function () {
+        var id = self.peerId();
+        
+        connectCoordinator(id);
+        
+        self.showButtons(false);
+    }
+    
+    self.showButtons = function (show) {
+        self.displayJoinRoomButton(show);
+        self.displayStartHostButton(show);
+    }
 };
 
 ko.applyBindings(new ViewModel());

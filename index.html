@@ -6,35 +6,39 @@
 
     <title>BeChill</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <!--    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">-->
 
     <script src="http://cdn.peerjs.com/0.3/peer.js"></script>
 </head>
 
 <body>
-
     <div class="container">
+        
         <h1>BeChill</h1>
         <hr>
         <button type="button" class="btn btn-default" data-bind="visible: displayStartHostButton, click: startHostButton">Start Hosting</button>
+        
         <dl class="dl-horizontal">
             <dt>Current Song</dt>
             <dd>
                 <span data-bind="text: currentSong"></span>
             </dd>
         </dl>
+        
         <div class="btn-group">
+            
             <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-step-backward"></span></button>
             <button type="button" class="btn btn-default" data-bind="click: playButton">
                 <div data-bind="if: isPlaying">
-                    <span class="glyphicon glyphicon-play"></span>
+                    <span class="glyphicon glyphicon-pause"></span>
                 </div>
                 <div data-bind="ifnot: isPlaying">
-                    <span class="glyphicon glyphicon-pause"></span>
+                    <span class="glyphicon glyphicon-play"></span>
                 </div>
             </button>
             <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-step-forward"></span></button>
+            
         </div>
+        
         <hr>
 
         <div class="panel panel-default">

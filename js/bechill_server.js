@@ -53,7 +53,6 @@ var startCoordinator = function () {
                 
                 currentStatus = updatedStatus;
                 
-                ViewModel.isPlaying(currentStatus.playing);
             }
             
             if (data.msg === "updateplaylist") {

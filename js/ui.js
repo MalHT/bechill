@@ -10,7 +10,7 @@ var ViewModel = function () {
 
     self.displayStartHostButton = ko.observable(true);
     self.displayJoinRoomButton = ko.observable(true);
-    
+
     self.peerId = ko.observable('');
 
     self.playButton = function () {
@@ -32,19 +32,31 @@ var ViewModel = function () {
         self.showButtons(false);
         self.peerId(peer.id);
     };
-    
+
     self.joinRoomButton = function () {
         var id = self.peerId();
-        
+
         connectCoordinator(id);
-        
+
         self.showButtons(false);
-    }
-    
+    };
+
     self.showButtons = function (show) {
         self.displayJoinRoomButton(show);
         self.displayStartHostButton(show);
-    }
+    };
+
+    self.updateValues = function () {
+        if (currentStatus.playing != self.isPlaying()) {
+            self.isPlaying(currentStatus.playing);
+        };
+    };
+
+    window.setInterval(function () {
+
+        self.updateValues();
+
+    }, 5000);
 };
 
 ko.applyBindings(new ViewModel());

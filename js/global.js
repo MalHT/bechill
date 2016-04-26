@@ -1,3 +1,4 @@
+var TIME_STEP = 500;
 // List of songs
 var playlist = [
     {title: "Song Title", youtube_src: "baSe64/Id"},

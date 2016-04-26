@@ -78,7 +78,7 @@ var startCoordinator = function () {
     
         broadcastPeers(getMediaStatus());
         
-    }, 5000);
+    }, TIME_STEP);
 
 };
 

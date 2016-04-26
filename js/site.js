@@ -56,7 +56,7 @@ var ViewModel = function () {
 
         self.updateValues();
 
-    }, 5000);
+    }, TIME_STEP);
 };
 
 ko.applyBindings(new ViewModel());

@@ -45,7 +45,7 @@ var startCoordinator = function () {
                 
             }
             
-            if (data.msg === "updatemediastatus") {
+            if (data.msg === "mediastatus") {
 
                 var updatedStatus = JSON.parse(JSON.stringify(data));
                 
@@ -55,7 +55,7 @@ var startCoordinator = function () {
                 
             }
             
-            if (data.msg === "updateplaylist") {
+            if (data.msg === "playlist") {
                 
                 var updatedPlaylist = JSON.parse(JSON.stringify(data));
                 

@@ -4,61 +4,62 @@ var coordinator;
 var connectCoordinator = function (serverid) {
 
     console.log("Connecting to coordinator...");
-    
+
     isConnectedAsClient = true;
-    
+
     coordinator = peer.connect(serverid);
 
     coordinator.on('open', function () {
-        
-        coordinator.send({msg: "join"});
-        
-        coordinator.on('data', function (data) {
-            
-            if (data.msg === "mediastatus") {
-                
-                var updatedStatus = JSON.parse(JSON.stringify(data));
-                
-                delete updatedStatus.msg;
-                
-                delete updatedStatus.currenttime;
-                
-                currentStatus = updatedStatus;
-                
-            }
-            
-            if (data.msg === "playlist") {
-                
-                var updatedPlaylist = JSON.parse(JSON.stringify(data));
-                
-                delete data.msg;
-                
-                playlist = updatedPlaylist;
-                
-            }
-            
-            console.log(data);
-            
+
+        coordinator.send({
+            msg: "join"
         });
-        
+
+        coordinator.on('data', function (data) {
+
+            if (data.msg === "mediastatus") {
+
+                var updatedStatus = JSON.parse(JSON.stringify(data));
+
+                delete updatedStatus.msg;
+
+                delete updatedStatus.currenttime;
+
+                currentStatus = updatedStatus;
+            }
+
+            if (data.msg === "playlist") {
+
+                var updatedPlaylist = JSON.parse(JSON.stringify(data));
+
+                delete data.msg;
+
+                playlist = updatedPlaylist;
+
+            }
+
+            console.log(data);
+
+        });
+
     });
 
 };
 
 var sendUpdatedMediaStatus = function (message) {
-    
-    message.msg = "updatemediastatus";
-    
+
+    message.msg = "mediastatus";
+
     coordinator.send(message);
-    
+
 };
 
 var sendUpdatedPlaylist = function (message) {
-    
-    message.msg = "updateplaylist";
-    
+
+    message.msg = "playlist";
+
     coordinator.send(message);
-    
+
 }
 
 /*

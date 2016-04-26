@@ -16,22 +16,18 @@
     <div class="container">
 
         <h1>BeChill</h1>
-        <div data-bind="if: displayStartHostButton">
-            <hr>
-            <span class="input-group" data-bind="visible: displayJoinRoomButton">
-                
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" data-bind="visible: displayStartHostButton, click: startHostButton">Start Hosting</button>
-                </span>
-
-                <input type="text" data-bind="value: peerId" class="form-control" placeholder="Peer ID">
-
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" data-bind="click: joinRoomButton">Join Room</button>
-                </span>
-                
+        <hr>
+        <span class="input-group" data-bind="visible: displayJoinRoomButton">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" data-bind="visible: displayStartHostButton, click: startHostButton">Start Hosting</button>
             </span>
-        </div>
+
+            <input type="text" data-bind="value: peerId" class="form-control" placeholder="Peer ID">
+
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" data-bind="click: joinRoomButton">Join Room</button>
+            </span>
+        </span>
 
         <div data-bind="if: showMainPage">
             <hr>

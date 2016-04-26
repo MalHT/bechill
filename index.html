@@ -16,45 +16,45 @@
     <div class="container">
 
         <h1>BeChill</h1>
-        <hr>
-        <button type="button" class="btn btn-default" data-bind="visible: displayStartHostButton, click: startHostButton">Start Hosting</button>
-        <br>
-        
-        <div class="input-group" data-bind="visible: displayJoinRoomButton">
-            <input type="text" data-bind="value: peerId" class="form-control" placeholder="Peer ID">
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-default" data-bind="click: joinRoomButton">Join Room</button>
+        <div data-bind="if: displayStartHostButton">
+            <hr>
+            <span class="input-group" data-bind="visible: displayJoinRoomButton">
+                
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" data-bind="visible: displayStartHostButton, click: startHostButton">Start Hosting</button>
+                </span>
+
+                <input type="text" data-bind="value: peerId" class="form-control" placeholder="Peer ID">
+
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" data-bind="click: joinRoomButton">Join Room</button>
+                </span>
+                
             </span>
         </div>
-        
+
         <div data-bind="if: showMainPage">
+            <hr>
+            <div class="text-center">
 
-            <dl class="dl-horizontal">
-                <dt>Current Song</dt>
-                <dd>
-                    <span data-bind="text: currentSong"></span>
-                </dd>
-            </dl>
-
-            <div class="btn-group">
-
-                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-step-backward"></span></button>
-                <button type="button" class="btn btn-default" data-bind="click: playButton">
-                    <div data-bind="if: isPlaying">
-                        <span class="glyphicon glyphicon-pause"></span>
-                    </div>
-                    <div data-bind="ifnot: isPlaying">
-                        <span class="glyphicon glyphicon-play"></span>
-                    </div>
-                </button>
-                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-step-forward"></span></button>
-
+                <div class="btn-group">
+                    <button type="button" class="btn btn-lg" data-bind="enable: !displayJoinRoomButton"><span class="glyphicon glyphicon-step-backward"></span></button>
+                    <button type="button" class="btn btn-lg" data-bind="click: playButton, enable: !displayJoinRoomButton">
+                        <div data-bind="if: isPlaying">
+                            <span class="glyphicon glyphicon-pause"></span>
+                        </div>
+                        <div data-bind="ifnot: isPlaying">
+                            <span class="glyphicon glyphicon-play"></span>
+                        </div>
+                    </button>
+                    <button type="button" class="btn btn-lg" data-bind="enable: !displayJoinRoomButton"><span class="glyphicon glyphicon-step-forward"></span></button>
+                </div>
             </div>
 
             <hr>
 
             <div class="panel panel-default">
-                <div class="panel-heading">Playlist</div>
+                <div class="panel-heading">Current Song: <span data-bind="text: currentSong"></span></div>
                 <table class="table">
                     <tbody data-bind="foreach: playlist">
                         <tr>
@@ -64,10 +64,13 @@
                 </table>
             </div>
         </div>
-        
+
         <!--- YouTube player container - to be added programatically --->
-        <div id="youtube-player"></div>
-        
+        <div class="text-center">
+            <div id="youtube-player"></div>
+        </div>
+        <hr>
+
     </div>
 </body>
 
